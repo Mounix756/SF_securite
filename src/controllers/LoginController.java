@@ -69,7 +69,7 @@ public class LoginController
             confirmation_create = true;
             pst.executeUpdate();
             pst.close();
-            
+            JOptionPane.showMessageDialog(null, "Votre compte a été crée avec succès !");
         } catch (Exception e2) 
         {
             confirmation_create = false;

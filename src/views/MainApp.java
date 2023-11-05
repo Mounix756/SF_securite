@@ -1182,6 +1182,7 @@ public class MainApp extends javax.swing.JFrame {
         get_email_user = email_user_register.getText();
         first_name = nom_user.getText();
         last_name = prenom_user.getText();
+        son_email_login = get_email_user;
         
         char[] password = password_user_register.getPassword();
         try {
@@ -1197,8 +1198,11 @@ public class MainApp extends javax.swing.JFrame {
             byte[] encryptedPassword = cipher.doFinal(new String(password).getBytes());
             String encodedPassword = Base64.getEncoder().encodeToString(encryptedPassword);
             pass = encodedPassword;
+            son_password_login = pass;
             secret_user = code;
             
+            System.err.println("email : "+son_email_login);
+            System.err.println("password : "+son_password_login);
             System.out.print("Sans crypté : "+password_user_register.getText()+"\n");
             System.out.print("Mot de passe : "+email_user_register.getText()+"\n");
             System.out.print("Password crypté : "+encodedPassword+"\n");
@@ -1210,13 +1214,18 @@ public class MainApp extends javax.swing.JFrame {
             // Une fois l'enregistrement terminé, redirigez l'utilisateur vers le menu utilisateur
             LoginController login_controlleur = new LoginController();
             login_controlleur.create_new_user_account();
+            
+            
             boolean confirmation_de_creation_de_compte = LoginController.confirmation_create;
+            
             if(confirmation_de_creation_de_compte == true)
             {
+                login_controlleur.authentification();
                 MainPanel.removeAll();
-                MainPanel.add(LoginPage);
+                MainPanel.add(MenuUser);
                 MainPanel.repaint();
                 MainPanel.revalidate();
+                System.err.println("L'utilisateur connecté est : "+ first_name + " "+ last_name);
             }
             else
             {
