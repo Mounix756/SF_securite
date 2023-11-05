@@ -76,7 +76,7 @@ public class MainApp extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
+        lbl_disconnect = new javax.swing.JLabel();
         PanelPrincipale = new javax.swing.JPanel();
         HomePage = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -661,11 +661,11 @@ public class MainApp extends javax.swing.JFrame {
         jButton6.setText("end");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/icons/logout.png"))); // NOI18N
-        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbl_disconnect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/icons/logout.png"))); // NOI18N
+        lbl_disconnect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_disconnect.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                lbl_disconnectMouseClicked(evt);
             }
         });
 
@@ -681,7 +681,7 @@ public class MainApp extends javax.swing.JFrame {
                         .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel14))
+                    .addComponent(lbl_disconnect))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         DashboardUserLayout.setVerticalGroup(
@@ -696,7 +696,7 @@ public class MainApp extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_disconnect, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
 
@@ -1358,16 +1358,19 @@ public class MainApp extends javax.swing.JFrame {
         PanelPrincipale.revalidate();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+    private void lbl_disconnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_disconnectMouseClicked
         email_user_register.setText("");
         email_user.setText("");
+        password_user_register.setText("");
+        nom_user.setText("");
+        prenom_user.setText("");
         password_user.setText("");
         password_user_register.setText("");
         MainPanel.removeAll();
         MainPanel.add(LoginPage);
         MainPanel.repaint();
         MainPanel.revalidate();
-    }//GEN-LAST:event_jLabel14MouseClicked
+    }//GEN-LAST:event_lbl_disconnectMouseClicked
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -1431,7 +1434,6 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1473,6 +1475,7 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel lbl_disconnect;
     private javax.swing.JLabel message_erreur1;
     private javax.swing.JLabel message_erreur_register;
     private javax.swing.JTextField nom_user;
