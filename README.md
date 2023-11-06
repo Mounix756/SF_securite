@@ -27,3 +27,11 @@ Technologies utilisées :
 
 
 Ce projet vise à développer une plateforme d'échange de fichiers sécurisée en utilisant les algorithmes de chiffrement AES et DES. En garantissant la confidentialité et l'intégrité des données échangées, cette plateforme offrira aux utilisateurs un moyen sûr et fiable d'échanger des fichiers sensible
+
+
+Outils nécessaires pour executer ce projet:
+* Un PC configurer pour executer du code java, c'est à dire avec un jdk-19 installée;
+* Un environnement de développement java : netbeans (la dernières versions, la version utilisée pour ce projet est la version 18) ou eclipse IDE;
+* Un serveur local wampserver ou xamp (l'outils utilisé pour ce projet est xamp 64);
+* Une base de données MySQL;
+* Importer la base de donnée utilisée pour ce projet (fichier se trouvant dans l'emplacement /ressources/bd/ de ce projet;
