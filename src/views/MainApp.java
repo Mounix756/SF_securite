@@ -6,10 +6,13 @@ package views;
 
 import controllers.DB_Connection;
 import controllers.LoginController;
+import java.io.File;
 import javax.crypto.*;
 import java.util.Base64;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 /**
  *
  * @author blais
@@ -91,14 +94,18 @@ public class MainApp extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         FichierPage = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        nom_fichier = new javax.swing.JTextField();
+        chemin = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
+        description = new javax.swing.JEditorPane();
+        btn_add_new_file = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel27 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -848,16 +855,21 @@ public class MainApp extends javax.swing.JFrame {
         jPanel14.setBackground(java.awt.Color.white);
         jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextField2.setText("Nom du fichier*");
-        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        nom_fichier.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        nom_fichier.setText("Nom du fichier*");
+        nom_fichier.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
-        jTextField3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextField3.setText("Choisir un fichier*");
-        jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        chemin.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        chemin.setText("Choisir un fichier*");
+        chemin.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        chemin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cheminMouseClicked(evt);
+            }
+        });
+        chemin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                cheminActionPerformed(evt);
             }
         });
 
@@ -874,29 +886,70 @@ public class MainApp extends javax.swing.JFrame {
         jLabel26.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jLabel26.setText("Nom");
 
-        jEditorPane1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jScrollPane1.setViewportView(jEditorPane1);
+        description.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jScrollPane1.setViewportView(description);
+
+        btn_add_new_file.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
+        btn_add_new_file.setText("Ajouter");
+        btn_add_new_file.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_add_new_fileActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ressources/icons/file.png"))); // NOI18N
+        jLabel14.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 1, new java.awt.Color(0, 0, 0)));
+        jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
+
+        jComboBox1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accès privé", "Accès public" }));
+
+        jLabel27.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
+        jLabel27.setText("Accès");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(nom_fichier, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel14Layout.createSequentialGroup()
+                                        .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(32, 32, 32))
+                                    .addGroup(jPanel14Layout.createSequentialGroup()
+                                        .addComponent(chemin, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(btn_add_new_file, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
@@ -909,14 +962,22 @@ public class MainApp extends javax.swing.JFrame {
                     .addComponent(jLabel25)
                     .addComponent(jLabel26))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nom_fichier, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chemin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_add_new_file, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
 
         jPanel17.setBackground(java.awt.Color.white);
@@ -1372,9 +1433,46 @@ public class MainApp extends javax.swing.JFrame {
         MainPanel.revalidate();
     }//GEN-LAST:event_lbl_disconnectMouseClicked
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void cheminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cheminActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_cheminActionPerformed
+
+    private static String file_name;
+    private static String file_description;
+    private static String file_path;
+    
+    private void btn_add_new_fileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_new_fileActionPerformed
+        file_name = nom_fichier.getText();
+        file_description = description.getText();
+        file_path = chemin.getText();
+    }//GEN-LAST:event_btn_add_new_fileActionPerformed
+
+    //Cette methode ouvre l'explorateur de fichier pour permettre la selection d'un fichier sur le disque local
+    public void ChargerLeFichier() {
+        try {
+            JFileChooser pic = new JFileChooser();
+            pic.showOpenDialog(null);
+
+            File picture = pic.getSelectedFile();
+            String chemin_fichier, NomFichier;
+            chemin_fichier = picture.getAbsolutePath();
+            NomFichier = picture.getAbsolutePath();
+            chemin.setText(NomFichier);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Une erreur s'est produite\n lors de la récupération du fichier");
+            e.printStackTrace();
+        }
+    }
+    
+    private void cheminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cheminMouseClicked
+        
+    }//GEN-LAST:event_cheminMouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        //Ici lors que l'utilisateur clique sur le champ de saisie, l'exploiteur de fichier s'ouvre lui permettant
+        //de choisir un fichier dans un emplacement donnée*
+        ChargerLeFichier();
+    }//GEN-LAST:event_jLabel14MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1420,20 +1518,24 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JPanel MenuUser;
     private javax.swing.JPanel PanelPrincipale;
     private javax.swing.JPanel RegisterPage;
+    private javax.swing.JButton btn_add_new_file;
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;
+    private javax.swing.JTextField chemin;
+    private javax.swing.JEditorPane description;
     private javax.swing.JTextField email_user;
     private javax.swing.JTextField email_user_register;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1447,6 +1549,7 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1473,11 +1576,10 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lbl_disconnect;
     private javax.swing.JLabel message_erreur1;
     private javax.swing.JLabel message_erreur_register;
+    private javax.swing.JTextField nom_fichier;
     private javax.swing.JTextField nom_user;
     private javax.swing.JPasswordField password_user;
     private javax.swing.JPasswordField password_user2;

@@ -75,7 +75,6 @@ public class LoginController
             confirmation_create = false;
             e2.printStackTrace();
         }
-        System.out.println("Confirm : "+confirmation_create);
     }
     
     /*Methode permettant d'authentifier l'utilisateur, c'est à dire verifier si son email et mot de passe sont vrais.*/
