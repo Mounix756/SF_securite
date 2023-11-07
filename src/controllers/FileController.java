@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import views.MainApp;
 
 /**
@@ -75,6 +76,44 @@ public class FileController
         {
             confirmation_create = false;
             e2.printStackTrace();
+        }
+    }
+    
+    public static DefaultTableModel table_value()
+    {
+        return table_model;
+    }
+    
+    //Fonction permettant d'afficher la liste utilisateurs dans un tableau
+    public static DefaultTableModel table_model;
+    public void liste_des_users() 
+    {
+        try 
+        {
+            connexion();
+            String[] entete = {"NOM", "PRENOM", "EMAIL"};
+            String[] ligne = new String[12];
+
+            DefaultTableModel model = new DefaultTableModel(null, entete);
+            //Requête sql permettant de selectionner par ordre decroissant la liste de tous les utilisateurs.
+            String sqlTable = "SELECT *  FROM users ORDER BY(created_at) DESC";
+
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sqlTable);
+            while (rs.next())
+            {
+                ligne[0] = rs.getString("nom");
+                ligne[1] = rs.getString("prenom");
+                ligne[2] = rs.getString("email");
+                model.addRow(ligne);
+            }
+            table_model = model;
+            //lister_users_table.setModel(model);
+        } 
+        catch (Exception e2) 
+        {
+            e2.printStackTrace();
+            System.out.println("Erreur au niveau d'affichage table");
         }
     }
 }

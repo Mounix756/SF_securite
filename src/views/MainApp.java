@@ -5,6 +5,7 @@
 package views;
 
 import controllers.DB_Connection;
+import controllers.FileController;
 import controllers.LoginController;
 import java.io.File;
 import javax.crypto.*;
@@ -13,6 +14,7 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author blais
@@ -24,8 +26,10 @@ public class MainApp extends javax.swing.JFrame {
      */
     public MainApp() {
         initComponents();
-        DB_Connection app  = new DB_Connection();
-        app.connexion();
+        FileController table = new FileController();
+        table.liste_des_users();
+        DefaultTableModel my_table = FileController.table_value();
+        lister_users_table.setModel(my_table);
     }
 
     /**
@@ -109,7 +113,7 @@ public class MainApp extends javax.swing.JFrame {
         jPanel17 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        lister_users_table = new javax.swing.JTable();
         jPanel15 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
@@ -993,7 +997,8 @@ public class MainApp extends javax.swing.JFrame {
         jLabel28.setFont(new java.awt.Font("Impact", 0, 16)); // NOI18N
         jLabel28.setText("Choisissez les utilisateurs qui doivent avoir accès :");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        lister_users_table.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lister_users_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -1009,7 +1014,12 @@ public class MainApp extends javax.swing.JFrame {
                 "NOM", "PRENOM", "EMAIL"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        lister_users_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lister_users_tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(lister_users_table);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -1098,10 +1108,6 @@ public class MainApp extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -1571,6 +1577,11 @@ public class MainApp extends javax.swing.JFrame {
         ChargerLeFichier();
     }//GEN-LAST:event_jLabel14MouseClicked
 
+    private void lister_users_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lister_users_tableMouseClicked
+        //Afficher une boite de dialogue pour demander si l'utilisateur veut reellement partager l'accès à son fichier à un autre utilisateur donnée.
+        JOptionPane.showConfirmDialog(null, "Voulez vous partager l'accès à ce fichier à ce utilisateur?", "PARTAGE D'ACCES AU FICHIER", WIDTH);
+    }//GEN-LAST:event_lister_users_tableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1677,10 +1688,10 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_disconnect;
+    public static javax.swing.JTable lister_users_table;
     private javax.swing.JLabel message_erreur1;
     private javax.swing.JLabel message_erreur_register;
     private javax.swing.JTextField nom_fichier;
