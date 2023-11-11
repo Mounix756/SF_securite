@@ -40,7 +40,6 @@ public class LoginController
             Class.forName("com.mysql.jdbc.Driver");
             con = (Connection) DriverManager.getConnection(localhost+db_name, db_user, db_password);
             Statement st = (Statement) con.createStatement();
-            System.out.println("Good connection");
         } catch (Exception e) {
             System.out.println("Connexion échoué");
             e.printStackTrace();
@@ -52,6 +51,11 @@ public class LoginController
     public String email_user = MainApp.getEmailUser();
     public String password_user = MainApp.getPasswordCrypte();
     public String pass_secret = MainApp.getCodeUserRegister();
+    
+    //Ici à travers les getters je get la valeurs de l'email et mot de passe entrée par l'utilisateur depuis le fichier MainApp.java
+    public String email_login = MainApp.getEmail();
+    public String password_login = MainApp.getPassword();
+    public static boolean confirmation;
     
     //Cette fonction permet la creation d'un compte utilisateur
     public static boolean confirmation_create = false;
@@ -69,6 +73,7 @@ public class LoginController
             confirmation_create = true;
             pst.executeUpdate();
             pst.close();
+            
             JOptionPane.showMessageDialog(null, "Votre compte a été crée avec succès !");
         } catch (Exception e2) 
         {
@@ -77,18 +82,13 @@ public class LoginController
         }
     }
     
-    /*Methode permettant d'authentifier l'utilisateur, c'est à dire verifier si son email et mot de passe sont vrais.*/
-    
-    //Ici à travers les getters je get la valeurs de l'email et mot de passe entrée par l'utilisateur depuis le fichier MainApp.java
-    
-
-    public String email_login = MainApp.getEmail();
-    public String password_login = MainApp.getPassword();
-    public static boolean confirmation;
+    /*Methode permettant d'authentifier l'utilisateur, c'est à dire verifier si son email et mot de passe sont vrais.*/    
+   
 
     public void authentification() {
     try {
         connexion();
+        //Requete permettant de selectionner l'utilisateur un email correspondant à l'email entré.
         pst = (PreparedStatement) con.prepareStatement("SELECT mot_de_passe, code FROM users WHERE email = ?");
         pst.setString(1, email_login);
         rs = pst.executeQuery();

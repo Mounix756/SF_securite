@@ -15,6 +15,7 @@ import java.util.regex.Matcher;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author blais
@@ -76,7 +77,7 @@ public class MainApp extends javax.swing.JFrame {
         prenom_user = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        password_user2 = new javax.swing.JPasswordField();
+        confirm_pass = new javax.swing.JPasswordField();
         MenuUser = new javax.swing.JPanel();
         DashboardUser = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
@@ -177,7 +178,6 @@ public class MainApp extends javax.swing.JFrame {
         jPanel2.setBackground(java.awt.Color.white);
 
         email_user.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        email_user.setText("abc");
         email_user.setBorder(null);
         email_user.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         email_user.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -211,7 +211,6 @@ public class MainApp extends javax.swing.JFrame {
         jPanel3.setBackground(java.awt.Color.white);
 
         password_user.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        password_user.setText("a");
         password_user.setBorder(null);
         password_user.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         password_user.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -364,7 +363,6 @@ public class MainApp extends javax.swing.JFrame {
         jPanel5.setBackground(java.awt.Color.white);
 
         email_user_register.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        email_user_register.setText("Votre adresse email*");
         email_user_register.setBorder(null);
         email_user_register.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         email_user_register.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -440,7 +438,6 @@ public class MainApp extends javax.swing.JFrame {
         jPanel7.setBackground(java.awt.Color.white);
 
         nom_user.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        nom_user.setText("Votre nom*");
         nom_user.setBorder(null);
         nom_user.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         nom_user.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -479,7 +476,6 @@ public class MainApp extends javax.swing.JFrame {
         jPanel8.setBackground(java.awt.Color.white);
 
         prenom_user.setFont(new java.awt.Font("Arial", 0, 15)); // NOI18N
-        prenom_user.setText("Votre prenom*");
         prenom_user.setBorder(null);
         prenom_user.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         prenom_user.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -516,20 +512,20 @@ public class MainApp extends javax.swing.JFrame {
 
         jPanel9.setBackground(java.awt.Color.white);
 
-        password_user2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        password_user2.setBorder(null);
-        password_user2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        password_user2.addMouseListener(new java.awt.event.MouseAdapter() {
+        confirm_pass.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        confirm_pass.setBorder(null);
+        confirm_pass.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        confirm_pass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                password_user2MouseClicked(evt);
+                confirm_passMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                password_user2MouseExited(evt);
+                confirm_passMouseExited(evt);
             }
         });
-        password_user2.addActionListener(new java.awt.event.ActionListener() {
+        confirm_pass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_user2ActionPerformed(evt);
+                confirm_passActionPerformed(evt);
             }
         });
 
@@ -539,12 +535,12 @@ public class MainApp extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(password_user2, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addComponent(confirm_pass, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(password_user2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+            .addComponent(confirm_pass, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -1226,38 +1222,21 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_password_userActionPerformed
 
     private void email_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_email_userMouseClicked
-        String email = email_user.getText();
-        if(email.equals("Votre adresse email*") == true)
-        {
-            email_user.setText("");
-        }
+
     }//GEN-LAST:event_email_userMouseClicked
 
     private void email_userMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_email_userMouseExited
-        String email = email_user.getText();
-        if(email.equals("") == true)
-        {
-            email_user.setText("Votre adresse email*");
-        }
+
     }//GEN-LAST:event_email_userMouseExited
 
     private void password_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_userMouseClicked
-        String email = password_user.getText();
-        if(email.equals("Votre mot de passe*") == true)
-        {
-            password_user.setText("");
-        }
+
     }//GEN-LAST:event_password_userMouseClicked
 
     private void password_userMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_userMouseExited
-        String email = password_user.getText();
-        if(email.equals("") == true)
-        {
-            password_user.setText("Votre mot de passe*");
-        }
+
     }//GEN-LAST:event_password_userMouseExited
 
-    
     // Fonction pour vérifier si l'email est valide
     private boolean isValidEmail(String email) {
         String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
@@ -1265,165 +1244,148 @@ public class MainApp extends javax.swing.JFrame {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
-    
-    
-    
+
     public static String son_email_login;
     public static String son_password_login;
-    
-    
+
     //Ici à l'aide d'un getter, je guette la valeur de "confirmation" depuis le fichier MainApp.
     public boolean confirm = LoginController.confirmation;
-    
-    
+
+
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         son_email_login = email_user.getText();
         son_password_login = password_user.getText();
-        System.err.println("email : "+son_email_login);
-        System.err.println("password : "+son_password_login);
 
-        
         //Extencier la classe contenant la methode de connexion puis faire appelle à la methode approprié
         LoginController login = new LoginController();
         login.authentification();
         boolean confirm = login.confirmation;
-            
+
         message_erreur_register.setText("");
-        if(confirm == true)
-        {
-           //Cette partie permet de faire appel au menu utilisateur
+        if (confirm == true) {
+            //Cette partie permet de faire appel au menu utilisateur
             MainPanel.removeAll();
             MainPanel.add(MenuUser);
             MainPanel.repaint();
             MainPanel.revalidate();
-        }
-        else
-        {
+        } else {
             message_erreur_register.setText("Email ou Mot de passe incorrect !");
-        } 
+        }
     }//GEN-LAST:event_btn_loginActionPerformed
 
-    public static String getEmail()
-    {
+    public static String getEmail() {
         return son_email_login;
     }
-    
-    public static String getPassword()
-    {
+
+    public static String getPassword() {
         return son_password_login;
     }
-    
+
     private static String pass;
     private static String first_name;
     private static String last_name;
     private static String get_email_user;
     private static String secret_user; // La clé secrète
-    
-    public static String getPasswordCrypte()
-    {
+
+    public static String getPasswordCrypte() {
         return pass;
     }
-    public static String getFirstNameUser()
-    {
+
+    public static String getFirstNameUser() {
         return first_name;
     }
-    public static String getLastNameUser()
-    {
+
+    public static String getLastNameUser() {
         return last_name;
     }
-    
-    
-    public static String getEmailUser()
-    {
+
+    public static String getEmailUser() {
         return get_email_user;
     }
 
-    
-    
+
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         // Ici j'ajoute une librairie java qui permet de chiffrer les mots passe entrée par l'utilisateur à l'aide d'une agorithme AES;
         // Récupérez les données de l'utilisateur depuis les champs de saisie
-        get_email_user = email_user_register.getText();
-        first_name = nom_user.getText();
-        last_name = prenom_user.getText();
-        son_email_login = get_email_user;
+        String first_password = password_user_register.getText();
+        String last_password = confirm_pass.getText();
         
-        char[] password = password_user_register.getPassword();
-        try {
-            // Générez une clé secrète AES
-            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-            keyGen.init(128);
-            SecretKey secretKey = keyGen.generateKey();
-            String code = Base64.getEncoder().encodeToString(secretKey.getEncoded());
+        String email = email_user_register.getText();
+        //Ici je declare cette variable, qui permettra de verifier la validité de l'email entré par l'utilisateur lors de la creation de son compte.
+        String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 
-            // Chiffrez le mot de passe
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-            byte[] encryptedPassword = cipher.doFinal(new String(password).getBytes());
-            String encodedPassword = Base64.getEncoder().encodeToString(encryptedPassword);
-            pass = encodedPassword;
-            son_password_login = pass;
-            secret_user = code;
-            
-            System.err.println("email : "+son_email_login);
-            System.err.println("password : "+son_password_login);
-            System.out.print("Sans crypté : "+password_user_register.getText()+"\n");
-            System.out.print("Mot de passe : "+email_user_register.getText()+"\n");
-            System.out.print("Password crypté : "+encodedPassword+"\n");
-            System.out.print("Clé de sécurité : "+secret_user+"\n");
-            
-            // Enregistrez l'email de l'utilisateur et le mot de passe chiffré dans la base de données
-            // Remplacez cette étape par votre propre logique de stockage sécurisé
-
-            // Une fois l'enregistrement terminé, redirigez l'utilisateur vers le menu utilisateur
-            LoginController login_controlleur = new LoginController();
-            login_controlleur.create_new_user_account();
-            
-            
-            boolean confirmation_de_creation_de_compte = LoginController.confirmation_create;
-            
-            if(confirmation_de_creation_de_compte == true)
-            {
-                login_controlleur.authentification();
-                MainPanel.removeAll();
-                MainPanel.add(MenuUser);
-                MainPanel.repaint();
-                MainPanel.revalidate();
-                System.err.println("L'utilisateur connecté est : "+ first_name + " "+ last_name);
-            }
-            else
-            {
-                message_erreur_register.setText("Oups! Une erreur s'est produite, ressayer !");
-            }
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            // Gérez les erreurs ici, par exemple, en affichant un message d'erreur à l'utilisateur
+        if (nom_user.getText().isEmpty() || prenom_user.getText().isEmpty() || email_user_register.getText().isEmpty() || password_user_register.getText().isEmpty() || confirm_pass.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Veillez remplir tous les champs avant de valider!");
         }
+        else if (!Pattern.matches(emailPattern, email)) {
+            JOptionPane.showMessageDialog(null, "Email non valide!");
+        }
+        else if (password_user_register.getText().length() < 8) {
+            JOptionPane.showMessageDialog(null, "Entrez un mot de passe fort avec au minimum 08 caratères !");
+        } else if (!first_password.equals(last_password)) {
+            JOptionPane.showMessageDialog(null, "Mot de passe non identiques !");
+        } else {
+            get_email_user = email_user_register.getText();
+            first_name = nom_user.getText();
+            last_name = prenom_user.getText();
+            son_email_login = get_email_user;
+            char[] password = password_user_register.getPassword();
+
+            try {
+                // Générez une clé secrète AES
+                KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+                keyGen.init(128);
+                SecretKey secretKey = keyGen.generateKey();
+                String code = Base64.getEncoder().encodeToString(secretKey.getEncoded());
+
+                // Chiffrez le mot de passe
+                Cipher cipher = Cipher.getInstance("AES");
+                cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+                byte[] encryptedPassword = cipher.doFinal(new String(password).getBytes());
+                String encodedPassword = Base64.getEncoder().encodeToString(encryptedPassword);
+                pass = encodedPassword;
+                son_password_login = pass;
+                secret_user = code;
+
+
+                // Enregistrez l'email de l'utilisateur et le mot de passe chiffré dans la base de données
+                // Remplacez cette étape par votre propre logique de stockage sécurisé
+                // Une fois l'enregistrement terminé, redirigez l'utilisateur vers le menu utilisateur
+                LoginController login_controlleur = new LoginController();
+                login_controlleur.create_new_user_account();
+
+                boolean confirmation_de_creation_de_compte = LoginController.confirmation_create;
+
+                if (confirmation_de_creation_de_compte == true) {
+                    login_controlleur.authentification();
+                    MainPanel.removeAll();
+                    MainPanel.add(MenuUser);
+                    MainPanel.repaint();
+                    MainPanel.revalidate();
+                } else {
+                    message_erreur_register.setText("Oups! Une erreur s'est produite, ressayer !");
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                // Gérez les erreurs ici, par exemple, en affichant un message d'erreur à l'utilisateur
+            }
+        }
+
+
     }//GEN-LAST:event_btn_registerActionPerformed
 
-    public static String getCodeUserRegister() 
-    {
+    public static String getCodeUserRegister() {
         return secret_user;
     }
-    
-    
+
+
     private void email_user_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_email_user_registerMouseClicked
-        //Ici il s'agit d'effacer les valeurs entrées par defaut dans les champs de saisie lorsque l'utilisateur clique sur les champs pour entrer sone email
-        String email = email_user_register.getText();
-        if(email.equals("Votre adresse email*") == true)
-        {
-            email_user_register.setText("");
-        }
+
     }//GEN-LAST:event_email_user_registerMouseClicked
 
     private void email_user_registerMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_email_user_registerMouseExited
-        //Ici il s'agit d'ajouter ce texte lorsque l'utilisateur n'a rien saisi dans le champs et decide de quittez avec la souris.
-        String email = email_user_register.getText();
-        if(email.equals("") == true)
-        {
-            email_user_register.setText("Votre adresse email*");
-        }
+
     }//GEN-LAST:event_email_user_registerMouseExited
 
     private void email_user_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_email_user_registerActionPerformed
@@ -1443,19 +1405,11 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_password_user_registerActionPerformed
 
     private void nom_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nom_userMouseClicked
-        String nom = nom_user.getText();
-        if(nom.equals("Votre nom*") == true)
-        {
-            nom_user.setText("");
-        }
+
     }//GEN-LAST:event_nom_userMouseClicked
 
     private void nom_userMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nom_userMouseExited
-        String nom = nom_user.getText();
-        if(nom.equals("") == true)
-        {
-            nom_user.setText("Votre nom*");
-        }
+
     }//GEN-LAST:event_nom_userMouseExited
 
     private void nom_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_userActionPerformed
@@ -1463,36 +1417,28 @@ public class MainApp extends javax.swing.JFrame {
     }//GEN-LAST:event_nom_userActionPerformed
 
     private void prenom_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prenom_userMouseClicked
-        String prenom = prenom_user.getText();
-        if(prenom.equals("Votre prenom*") == true)
-        {
-            prenom_user.setText("");
-        }
+
     }//GEN-LAST:event_prenom_userMouseClicked
 
     private void prenom_userMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prenom_userMouseExited
-        String prenom = prenom_user.getText();
-        if(prenom.equals("") == true)
-        {
-            prenom_user.setText("Votre prenom*");
-        }
+
     }//GEN-LAST:event_prenom_userMouseExited
 
     private void prenom_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenom_userActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_prenom_userActionPerformed
 
-    private void password_user2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_user2MouseClicked
+    private void confirm_passMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirm_passMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_user2MouseClicked
+    }//GEN-LAST:event_confirm_passMouseClicked
 
-    private void password_user2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_password_user2MouseExited
+    private void confirm_passMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirm_passMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_user2MouseExited
+    }//GEN-LAST:event_confirm_passMouseExited
 
-    private void password_user2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_user2ActionPerformed
+    private void confirm_passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirm_passActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_user2ActionPerformed
+    }//GEN-LAST:event_confirm_passActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         MainPanel.removeAll();
@@ -1543,7 +1489,7 @@ public class MainApp extends javax.swing.JFrame {
     private static String file_name;
     private static String file_description;
     private static String file_path;
-    
+
     private void btn_add_new_fileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_new_fileActionPerformed
         file_name = nom_fichier.getText();
         file_description = description.getText();
@@ -1566,9 +1512,9 @@ public class MainApp extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void cheminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cheminMouseClicked
-        
+
     }//GEN-LAST:event_cheminMouseClicked
 
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
@@ -1630,6 +1576,7 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_register;
     private javax.swing.JTextField chemin;
+    private javax.swing.JPasswordField confirm_pass;
     private javax.swing.JEditorPane description;
     private javax.swing.JTextField email_user;
     private javax.swing.JTextField email_user_register;
@@ -1697,7 +1644,6 @@ public class MainApp extends javax.swing.JFrame {
     private javax.swing.JTextField nom_fichier;
     private javax.swing.JTextField nom_user;
     private javax.swing.JPasswordField password_user;
-    private javax.swing.JPasswordField password_user2;
     private javax.swing.JPasswordField password_user_register;
     private javax.swing.JTextField prenom_user;
     // End of variables declaration//GEN-END:variables
